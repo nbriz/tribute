@@ -16,22 +16,22 @@
         top: `${y}px`,
         width: `${w}px`,
         height: `${h}px`,
-        border: '1px solid black'
+        // border: '1px solid black'
       })
       .addTo('body')
   }
 
   function setup() {
     nn.get('body').css({
-      'background-color': bgColor
+      'background-color': bgColor,
+      'overflow': 'hidden'
     })
-
-    for (let i = 0; i < 100; i++) {
-      const s = 140
-      // const x = (nn.width / 2) - (s / 2)
-      // const y = (nn.height / 2) - (s / 2)
-      const x = nn.random(0, nn.width)
-      const y = nn.random(0, nn.height)
+    
+    const s = 140
+    const numColumns = nn.width / (s / 4)
+    for (let i = 0; i < numColumns; i++) {
+      const x = i * (s / 4) - (s / 2)
+      const y = (nn.height / 2) - (s / 2)
       createGif(x, y, s, s, gifURL)
     }
   }
